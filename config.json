@@ -1,6 +1,8 @@
 {
-  "url": "https://app.todoist.com/app/today",
-  "browser": "Chrome",
-  "username": "imadrabah5@gmail.com",
-  "password": "ImadImad123"
+  "Url": "https://app.todoist.com/auth/login",
+  "home page": "https://app.todoist.com/app/today",
+  "browser": "chrome",
+  "Email": "imadrabah5@gmail.com",
+  "Password": "ImadImad123",
+  "WrongPass": "imadrbah123"
 }

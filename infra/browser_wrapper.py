@@ -1,44 +1,24 @@
+from pip._internal.resolution.resolvelib.factory import C
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.common.exceptions import * #all exceptions
-from selenium.webdriver.support import expected_conditions as ec
-
 from infra.config_provider import ConfigProvider
 
 
 class BrowserWrapper:
-
     def __init__(self):
         self._driver = None
-        self._config = ConfigProvider.load_from_file()
-        print("Test Start")
+        self.config = ConfigProvider.load_config_json('../config.json')
 
-    def get_driver(self, page):
+    def get_driver(self, url):
         try:
-            browser = self._config.get("browser", "Firefox")  # Default to Firefox if not specified
-            if browser == "Chrome":
+            if self.config["browser"] == "chrome":
                 self._driver = webdriver.Chrome()
-            elif browser == "Firefox":
+            elif self.config["browser"] == "firefox":
                 self._driver = webdriver.Firefox()
-            elif browser == "Edge":
-                self._driver = webdriver.Edge()
             else:
-                raise ValueError(f"Unsupported browser: {browser}")
-
-            url = self._config.get(page)
-            if url:
-                self._driver.maximize_window()
-                self._driver.get(url)
-                try:
-                    WebDriverWait(self._driver, 10).until(
-                        ec.presence_of_element_located((By.XPATH, '//body'))
-                    )
-                except TimeoutException:
-                    print("Loading the page took too long!")
-            else:
-                print(f"Page '{page}' not found in the configuration.")
-                exit(-1)
+                print("Browser type not supported")
+                return None
+            self._driver.get(url)
             return self._driver
-        except WebDriverException as e:
-            print(f"WebDriverException : {e}")
+        except C.webDriverException as e:
+            print("ERROR : ", e)
+            return None
