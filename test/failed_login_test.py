@@ -13,6 +13,7 @@ class TestLogin(unittest.TestCase):
     def setUp(self):
         self.browser = BrowserWrapper()
         self.driver = self.browser.get_driver(self.config["Url"])
+        time.sleep(5)
 
     def TearDown(self):
         self.driver.quit()

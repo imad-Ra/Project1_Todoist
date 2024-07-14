@@ -11,8 +11,7 @@ from logic.home_page import HomePage
 from logic.login_page import LoginPage
 
 
-class TestAddTask(unittest.TestCase):
-    # config = ConfigProvider.load_config_json('../config.json')
+class TestRemoveTask(unittest.TestCase):
 
     def setUp(self):
         self.browser = BrowserWrapper()
@@ -25,21 +24,27 @@ class TestAddTask(unittest.TestCase):
         self.home_page = HomePage(self.driver)
         self.home_page.click_add_task_button()
 
-    def tearDown(self):
-        self.add_task_page = TestAddRemoveTask(self.driver)
-        deleted_task_title = TestAddRemoveTask(self.driver)
-        deleted_task_title.delete_task()
-        self.driver.quit()
-
-    def test_add_task_name(self):
         add_task_page = TestAddRemoveTask(self.driver)
         add_task_page.click_add_task_button()
 
-        #Act
         text_to_insert = self.config["Title1_Test"]
         add_task_page.fill_task_name(text_to_insert)
         add_task_page.click_add_task_button()
-        added_task_title = TestAddRemoveTask(self.driver)
+
+
+
+
+
+    def tearDown(self):
+        self.add_task_page = TestAddRemoveTask(self.driver)
+        self.driver.quit()
+
+
+    def test_remove_task_name(self):
+        deleted_task_title = TestAddRemoveTask(self.driver)
+        deleted_task_title.delete_task()
 
         #Assert
-        self.assertEqual("task Added", added_task_title.verify_added_task())
+        self.assertTrue(deleted_task_title.verify_delete_task())
+
+

@@ -14,6 +14,10 @@ class LoginPage(BasePage):
     WRONG_SIGN_IN_MESSAGE = '//div[text()="Wrong email or password."]'
 
     config = ConfigProvider.load_config_json('../config.json')
+    """
+    A page object representing the login page.
+    
+    """
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -34,6 +38,7 @@ class LoginPage(BasePage):
         self.fill_email(email)
         self.fill_password(password)
         self.click_sign_in_button()
+        time.sleep(10)
 
     def wrong_sign_in_message_is_displayed(self):
         self._wrong_sign_in_message = WebDriverWait(self._driver, 3).until(
@@ -58,3 +63,5 @@ class LoginPage(BasePage):
 #     element = WebDriverWait(self._driver, 5).until(
 #         EC.presence_of_element_located((By.XPATH, self.EMAIL_INPUT)))
 #     element.send_keys(email)
+
+

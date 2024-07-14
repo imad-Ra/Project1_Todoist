@@ -15,6 +15,8 @@ class TestLogin(unittest.TestCase):
     def setUp(self):
         self.browser = BrowserWrapper()
         self.driver = self.browser.get_driver(self.config["Url"])
+        time.sleep(5)
+
 
 
     def TearDown(self):
@@ -34,11 +36,10 @@ class TestLogin(unittest.TestCase):
         # login_button.click_sign_in_button()
         # time.sleep(10)
         # self.assertEqual(self.driver.current_url, self.config["home page"])
+
         # # Assert
-        time.sleep(10)
         login = LoginPage(self.driver)
         login.login_flow(self.config["Email"], self.config["Password"])
-        time.sleep(10)
         self.assertEqual(self.driver.current_url, self.config["home page"])
 
 

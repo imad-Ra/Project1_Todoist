@@ -1,8 +1,11 @@
 {
   "Url": "https://app.todoist.com/auth/login",
   "home page": "https://app.todoist.com/app/today",
+  "inbox url": "https://app.todoist.com/app/inbox",
   "browser": "chrome",
   "Email": "imadrabah5@gmail.com",
   "Password": "ImadImad123",
-  "WrongPass": "imadrbah123"
+  "WrongPass": "imadrbah123",
+  "Title1_Test": "Test-Title1",
+  "Section_name": "Test-Section"
 }
