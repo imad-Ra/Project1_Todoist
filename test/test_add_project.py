@@ -20,7 +20,6 @@ class AddProject(unittest.TestCase):
         self.home_page = HomePage(self.driver)
 
     def tearDown(self):
-        # self.project_page.added_project_deletion_flow()
         self.driver.quit()
 
 

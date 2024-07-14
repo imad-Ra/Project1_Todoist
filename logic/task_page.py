@@ -13,6 +13,7 @@ class TestAddRemoveTask(BasePage):
     SUBMIT_ADD_TASK_BUTTON = '//button[@data-testid="task-editor-submit-button"]'
     TASK_TITLE = '//div[@class="task_content"]'[1]
     ADDED_TASK = '//ul["@class = items"]//div[@context="[object Object]"]'
+    TASK_LOCATION_BUTTON = '//div[@aria-label="Add location reminders"]'
     DELETE_TASK_BUTTON = '//button[@data-action-hint="task-complete"]'
 
     def __init__(self, driver):
@@ -49,3 +50,9 @@ class TestAddRemoveTask(BasePage):
         except NoSuchElementException:
             return False
 
+    def verify_location_button(self):
+        try:
+            self.wait.until(EC.presence_of_element_located((By.XPATH, self.TASK_LOCATION_BUTTON)))
+            return True
+        except NoSuchElementException:
+            return False
