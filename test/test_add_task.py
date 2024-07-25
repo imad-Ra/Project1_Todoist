@@ -1,14 +1,12 @@
-import time
 import unittest
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
+
 
 from infra.browser_wrapper import BrowserWrapper
 from infra.config_provider import ConfigProvider
 from logic.task_page import TestAddRemoveTask
 from logic.home_page import HomePage
 from logic.login_page import LoginPage
+from infra.logging_basicConfig import LoggingSetup
 
 
 class TestAddTask(unittest.TestCase):
@@ -16,9 +14,8 @@ class TestAddTask(unittest.TestCase):
 
     def setUp(self):
         self.browser = BrowserWrapper()
-        self.config = ConfigProvider.load_config_json('../config.json')
+        self.config = ConfigProvider.load_config_json(r'C:\Users\nraba\PycharmProjects\Project1_Todoist\config.json')
         self.driver = self.browser.get_driver(self.config["Url"])
-        time.sleep(10)
         login = LoginPage(self.driver)
         login.login_flow(self.config["Email"], self.config["Password"])
 

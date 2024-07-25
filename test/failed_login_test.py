@@ -2,18 +2,19 @@ import unittest
 
 from infra.browser_wrapper import BrowserWrapper
 from infra.config_provider import ConfigProvider
+from infra.logging_basicConfig import LoggingSetup
+
 import time
 from logic.login_page import LoginPage
 
 
 class TestLogin(unittest.TestCase):
     #loading data from json file using config_provider
-    config = ConfigProvider.load_config_json('../config.json')
+    config = ConfigProvider.load_config_json(r'C:\Users\nraba\PycharmProjects\Project1_Todoist\config.json')
 
     def setUp(self):
         self.browser = BrowserWrapper()
         self.driver = self.browser.get_driver(self.config["Url"])
-        time.sleep(5)
 
     def TearDown(self):
         self.driver.quit()

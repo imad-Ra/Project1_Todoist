@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="7.371" timestamp="2024-07-25T11:12:03.405931+03:00" hostname="DESKTOP-OPJ94K2"><testcase classname="failed_login_test.TestLogin" name="test_failed_login" time="6.875" /></testsuite></testsuites>

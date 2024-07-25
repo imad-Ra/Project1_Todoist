@@ -151,6 +151,8 @@ class AccountSettings(BasePage):
         """
         return self._TestAddRemoveTask.verify_location_button()
 
+
+
     def click_remove_location_from_quick_add_button(self):
         """Click the button to remove location from quick add."""
         self._remove_location_from_quick_add_button = WebDriverWait(self._driver, 5).until(
